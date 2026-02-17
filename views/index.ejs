@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Yoza</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap"
+        rel="stylesheet">
+    <!-- Ionicons for Icons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+    
+
+    
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo"><img src="/images/logo.png" alt="logo" class="logo-img"></a>
+
+            <div class="nav-links" id="nav-links">
+                <a href="#work" class="nav-link">Work</a>
+                <a href="#books" class="nav-link">Library</a>
+                <a href="#gallery" class="nav-link">Gallery</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#contact" class="nav-link btn-contact">Let's Talk</a>
+            </div>
+
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Navigation">
+                <ion-icon name="menu-outline"></ion-icon>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu" id="mobile-menu">
+        <button class="close-menu" id="close-menu"><ion-icon name="close-outline"></ion-icon></button>
+        <div class="mobile-links">
+            <a href="#work" class="mobile-link">Work</a>
+            <a href="#books" class="mobile-link">Reading List</a>
+            <a href="#gallery" class="mobile-link">Gallery</a>
+            <a href="#skills" class="mobile-link">Skills</a>
+            <a href="#contact" class="mobile-link">Contact</a>
+        </div>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <header class="hero">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <span class="eyebrow">Creative Developer & Designer</span>
+                    <h1>Designing Digital <br> <span class="highlight">Masterpieces.</span></h1>
+                    <p>I'm a fullstack developer. I blend technical precision with artistic direction to create websites that feel alive. Welcome
+                        to my digital garden.</p>
+                    <div class="hero-btns">
+                        <a href="#work" class="btn btn-primary">See My Work</a>
+                        <a href="#contact" class="btn btn-outline">Contact Me</a>
+                    </div>
+                </div>
+                <!-- Hero Image Placeholder -->
+                <div class="hero-visual">
+                    <div class="image-placeholder portrait-placeholder">
+                        <img src="/images/hero.png" alt="HeroImg" class="hero-img">               
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <span>Scroll</span>
+                <ion-icon name="arrow-down-outline"></ion-icon>
+            </div>
+        </header>
+
+        <!-- Projects Section -->
+        <section id="work" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Selected Works</h2>
+            <p class="section-subtitle">
+                A collection of my recent experiments and production builds.
+            </p>
+        </div>
+
+        <% if(projects && projects.length > 0){ %>
+
+        <!-- GRID SHOULD BE HERE -->
+        <div class="projects-grid">
+
+            <% projects.forEach(element => { %>
+
+            <article class="project-card">
+                <div class="thumbnail-wrapper">
+                    <img src="<%= element.img_url %>" 
+                         alt="<%= element.title %>" 
+                         class="project-image">
+                </div>
+
+                <div class="project-info">
+                    <div class="project-meta">
+                        <h3><%= element.title %></h3>
+                        <div class="project-links">
+                            <a href="<%= element.project_link %>" 
+                               target="_blank" 
+                               title="Live Demo">
+                                <ion-icon name="open-outline"></ion-icon>
+                            </a>
+                        </div>
+                    </div>
+
+                    <p class="project-desc">
+                        <%= element.description %>
+                    </p>
+                </div>
+            </article>
+
+            <% }); %>
+
+        </div>
+
+        <% } %>
+    </div>
+        </section>
+
+        <!-- Book Reviews Section -->
+        <section id="books" class="section bg-secondary">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">The Library</h2>
+                    <p class="section-subtitle">If you know me personally, you might know I like to read books. Here are some of the Books that have shaped my thinking. Click for my honest thoughts.</p>
+                </div>
+
+                <% if (books && books.length > 0){ %>
+                    <div class="books-grid">
+                        <% books.forEach(element => { %>
+                         
+                    <div class="book-card">
+                        <div class="book-cover">
+                            
+                           
+                                <img src="https://covers.openlibrary.org/b/isbn/<%=element.isbn%>-M.jpg" alt="book cover" class="image-placeholder book-placeholder">
+                            
+                        </div>
+                        <div class="book-info">
+                            <h4><%= element.title %></h4>
+                            <span class="author"><%= element.author %></span>
+                            <div class="rating">
+                                <ion-icon name="star"></ion-icon> <span><%= element.rating %>/10</span>
+                            </div>
+                            <button class="btn-text trigger-modal" data-modal="modal-book-<%= element.book_id %>">
+                                Read My Review <ion-icon name="arrow-forward"></ion-icon>
+                            </button>
+                        </div>
+                    </div>
+                    <%     }); %>
+                    <%  } %>
+                    
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Life In Frames</h2>
+                    <p class="section-subtitle">Snapshots from my journey. Click to uncover the story.</p>
+                </div>
+        <% if (gallery && gallery.length > 0) { %>
+                <div class="gallery-grid">
+            <% gallery.forEach(item => { %>  
+                  
+                    <div class="gallery-item trigger-modal" data-modal="modal-gallery-<%= item.img_id %>">
+                        <!-- <div class="image-placeholder gallery-placeholder"> -->
+                            <img src="<%= item.img_url %>" alt="gallery image">
+                        <!-- </div> -->
+                        <div class="gallery-overlay">
+                            <ion-icon name="expand-outline"></ion-icon>
+                        </div>
+                    </div>
+                <% }); %>
+                </div>
+                <% } %>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+<section id="skills" class="section bg-secondary">
+    <div class="container">
+        <div class="skills-layout">
+
+            <!-- Current Skills -->
+            <div class="skills-column">
+                <h3><ion-icon name="flash-outline"></ion-icon> My Toolkit</h3>
+                <p class="skills-desc">
+                    Technologies I use daily to build robust applications.
+                </p>
+
+                <ul class="skills-list">
+                    <% skills 
+                        .filter(skill => skill.skill_type === 'current')
+                        .forEach(skill => { %>
+
+                        <li><%= skill.skill_name %></li>
+
+                    <% }); %>
+                </ul>
+            </div>
+
+            <!-- Developing Skills -->
+            <div class="skills-column">
+                <h3><ion-icon name="trending-up-outline"></ion-icon> Currently Learning</h3>
+                <p class="skills-desc">
+                    Exploring new horizons to expand my capabilities.
+                </p>
+
+                <ul class="skills-list developing">
+                    <% skills
+                        .filter(skill => skill.skill_type === 'learning')
+                        .forEach(skill => { %>
+
+                        <li><%= skill.skill_name %></li>
+
+                    <% }); %>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+        <!-- Contact Section -->
+        <section id="contact" class="section contact-section">
+            <div class="container contact-container">
+                <h2 class="section-title">Let's Create Something Together</h2>
+                <p>Available for freelance projects and collaborations.</p>
+
+                <div class="social-links">
+                    <a href="https://wa.me/+9471685684" target="_blank" rel="noopener noreferrer" class="social-card">
+                        <ion-icon name="logo-whatsapp"></ion-icon>
+                        <span>WhatsApp</span>
+                        </a>
+                    <a href="https://www.instagram.com/invites/contact/?utm_source=ig_contact_invite&utm_medium=whatsapp" target="_blank" rel="noopener noreferrer" class="social-card">
+                            <ion-icon name="logo-instagram"></ion-icon>
+                            <span>Instagram</span>
+                    </a>
+                    <a href="https://www.facebook.com/share/187nCZPKt2/?mibextid=wwXIfr&wa_status_inline=true" target="_blank" rel="noopener noreferrer" class="social-card">
+                        <ion-icon name="logo-facebook"></ion-icon>
+                        <span>Facebook</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/yoosuf-ahamed-76580b227/" target="_blank" rel="noopener noreferrer" class="social-card">
+                        <ion-icon name="logo-linkedin"></ion-icon>
+                        <span>LinkedIn</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">YOZA</div>
+            <p>&copy; <%= new Date().getFullYear() %> Yoosuf's Portfolio. Crafted with intention.</p>
+        </div>
+    </footer>
+
+    <!-- MODALS (Hidden by default) -->
+
+    <!-- Modal Overlay -->
+    <div class="modal-overlay" id="modal-overlay"></div>
+
+    <!-- Book Modals -->
+
+    <% if(books && books.length >0){ %>
+        <% books.forEach(element => { %>
+            
+        <div class="modal" id="modal-book-<%= element.book_id %>">
+        <button class="close-modal"><ion-icon name="close"></ion-icon></button>
+        <h3>Thoughts on <%= element.title %></h3>
+        <p><%= element.my_thoughts %></p>
+    </div>
+
+      <%  }); %>
+   <% } %>
+
+
+    <!-- Gallery Modals -->
+        <% if(gallery && gallery.length >0){ %>
+        <% gallery.forEach(item => { %>
+        <div class="modal" id="modal-gallery-<%= item.img_id%>">
+        <button class="close-modal"><ion-icon name="close"></ion-icon></button>
+        <div class="modal-image-container modal-image-wrapper">
+            <!-- Reuse image or full res -->
+            <img src="<%= item.img_url%>" class="image-placeholder gallery-placeholder " alt="gallery image">
+        </div>
+        <div class="modal-text">
+            <p><%= item.img_description%></p>
+        </div>
+    </div>
+          <%  }); %>
+   <% } %>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>

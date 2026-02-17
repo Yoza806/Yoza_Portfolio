@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Nova</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap"
+        rel="stylesheet">
+    <!-- Ionicons for Icons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">NOVA.</a>
+
+            <div class="nav-links" id="nav-links">
+                <a href="#work" class="nav-link">Work</a>
+                <a href="#books" class="nav-link">Library</a>
+                <a href="#gallery" class="nav-link">Gallery</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#contact" class="nav-link btn-contact">Let's Talk</a>
+            </div>
+
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Navigation">
+                <ion-icon name="menu-outline"></ion-icon>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu" id="mobile-menu">
+        <button class="close-menu" id="close-menu"><ion-icon name="close-outline"></ion-icon></button>
+        <div class="mobile-links">
+            <a href="#work" class="mobile-link">Work</a>
+            <a href="#books" class="mobile-link">Reading List</a>
+            <a href="#gallery" class="mobile-link">Gallery</a>
+            <a href="#skills" class="mobile-link">Skills</a>
+            <a href="#contact" class="mobile-link">Contact</a>
+        </div>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <header class="hero">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <span class="eyebrow">Creative Developer & Designer</span>
+                    <h1>Designing Digital <br> <span class="highlight">Masterpieces.</span></h1>
+                    <p>I blend technical precision with artistic direction to create websites that feel alive. Welcome
+                        to my digital garden.</p>
+                    <div class="hero-btns">
+                        <a href="#work" class="btn btn-primary">See My Work</a>
+                        <a href="#about" class="btn btn-outline">More About Me</a>
+                    </div>
+                </div>
+                <!-- Hero Image Placeholder -->
+                <div class="hero-visual">
+                    <div class="image-placeholder portrait-placeholder">
+                        <span>Place Your Hero Image Here</span>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <span>Scroll</span>
+                <ion-icon name="arrow-down-outline"></ion-icon>
+            </div>
+        </header>
+
+        <!-- Projects Section -->
+        <section id="work" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Selected Works</h2>
+                    <p class="section-subtitle">A collection of my recent experiments and production builds.</p>
+                </div>
+
+                <div class="projects-grid">
+                    <!-- Project 1 -->
+                    <article class="project-card">
+                        <div class="thumbnail-wrapper">
+                            <div class="image-placeholder project-placeholder">
+                                <span>Project Thumbnail 1</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-meta">
+                                <h3>E-Commerce Dashboard</h3>
+                                <div class="project-links">
+                                    <a href="#" target="_blank" title="View Code"><ion-icon
+                                            name="logo-github"></ion-icon></a>
+                                    <a href="#" target="_blank" title="Live Demo"><ion-icon
+                                            name="open-outline"></ion-icon></a>
+                                </div>
+                            </div>
+                            <p class="project-desc">A comprehensive React dashboard for managing online stores with
+                                real-time analytics.</p>
+                            <div class="tags">
+                                <span class="tag">React</span>
+                                <span class="tag">Node.js</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 2 -->
+                    <article class="project-card">
+                        <div class="thumbnail-wrapper">
+                            <div class="image-placeholder project-placeholder">
+                                <span>Project Thumbnail 2</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-meta">
+                                <h3>Botanical AI</h3>
+                                <div class="project-links">
+                                    <a href="#" target="_blank" title="View Code"><ion-icon
+                                            name="logo-github"></ion-icon></a>
+                                    <a href="#" target="_blank" title="Live Demo"><ion-icon
+                                            name="open-outline"></ion-icon></a>
+                                </div>
+                            </div>
+                            <p class="project-desc">Plant identification app using TensorFlow.js and a custom dataset.
+                            </p>
+                            <div class="tags">
+                                <span class="tag">AI/ML</span>
+                                <span class="tag">Python</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 3 -->
+                    <article class="project-card">
+                        <div class="thumbnail-wrapper">
+                            <div class="image-placeholder project-placeholder">
+                                <span>Project Thumbnail 3</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-meta">
+                                <h3>Neon Social</h3>
+                                <div class="project-links">
+                                    <a href="#" target="_blank" title="View Code"><ion-icon
+                                            name="logo-github"></ion-icon></a>
+                                    <a href="#" target="_blank" title="Live Demo"><ion-icon
+                                            name="open-outline"></ion-icon></a>
+                                </div>
+                            </div>
+                            <p class="project-desc">Social media platform for designers to share work-in-progress shots.
+                            </p>
+                            <div class="tags">
+                                <span class="tag">Next.js</span>
+                                <span class="tag">Supabase</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Book Reviews Section -->
+        <section id="books" class="section bg-secondary">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">The Library</h2>
+                    <p class="section-subtitle">Books that have shaped my thinking. Click for my honest thoughts.</p>
+                </div>
+
+                <div class="books-grid">
+                    <!-- Book 1 -->
+                    <div class="book-card">
+                        <div class="book-cover">
+                            <!-- Placeholder for Book Cover -->
+                            <div class="image-placeholder book-placeholder">
+                                <span>Book Cover</span>
+                            </div>
+                        </div>
+                        <div class="book-info">
+                            <h4>Atomic Habits</h4>
+                            <span class="author">James Clear</span>
+                            <div class="rating">
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                            </div>
+                            <button class="btn-text trigger-modal" data-modal="modal-book-1">
+                                Read My Review <ion-icon name="arrow-forward"></ion-icon>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Book 2 -->
+                    <div class="book-card">
+                        <div class="book-cover">
+                            <div class="image-placeholder book-placeholder">
+                                <span>Book Cover</span>
+                            </div>
+                        </div>
+                        <div class="book-info">
+                            <h4>Deep Work</h4>
+                            <span class="author">Cal Newport</span>
+                            <div class="rating">
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star-half"></ion-icon>
+                            </div>
+                            <button class="btn-text trigger-modal" data-modal="modal-book-2">
+                                Read My Review <ion-icon name="arrow-forward"></ion-icon>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Book 3 -->
+                    <div class="book-card">
+                        <div class="book-cover">
+                            <div class="image-placeholder book-placeholder">
+                                <span>Book Cover</span>
+                            </div>
+                        </div>
+                        <div class="book-info">
+                            <h4>Clean Code</h4>
+                            <span class="author">Robert C. Martin</span>
+                            <div class="rating">
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star-outline"></ion-icon>
+                            </div>
+                            <button class="btn-text trigger-modal" data-modal="modal-book-3">
+                                Read My Review <ion-icon name="arrow-forward"></ion-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Life In Frames</h2>
+                    <p class="section-subtitle">Snapshots from my journey. Click to uncover the story.</p>
+                </div>
+
+                <div class="gallery-grid">
+                    <!-- Gallery Item 1 -->
+                    <div class="gallery-item trigger-modal" data-modal="modal-gallery-1">
+                        <div class="image-placeholder gallery-placeholder">
+                            <span>Photo 1</span>
+                        </div>
+                        <div class="gallery-overlay">
+                            <ion-icon name="expand-outline"></ion-icon>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Item 2 -->
+                    <div class="gallery-item trigger-modal" data-modal="modal-gallery-2">
+                        <div class="image-placeholder gallery-placeholder">
+                            <span>Photo 2</span>
+                        </div>
+                        <div class="gallery-overlay">
+                            <ion-icon name="expand-outline"></ion-icon>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Item 3 -->
+                    <div class="gallery-item trigger-modal" data-modal="modal-gallery-3">
+                        <div class="image-placeholder gallery-placeholder">
+                            <span>Photo 3</span>
+                        </div>
+                        <div class="gallery-overlay">
+                            <ion-icon name="expand-outline"></ion-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section bg-secondary">
+            <div class="container">
+                <div class="skills-layout">
+                    <!-- Current Skills -->
+                    <div class="skills-column">
+                        <h3><ion-icon name="flash-outline"></ion-icon> My Toolkit</h3>
+                        <p class="skills-desc">Technologies I use daily to build robust applications.</p>
+                        <ul class="skills-list">
+                            <li>JavaScript (ES6+)</li>
+                            <li>React & Next.js</li>
+                            <li>Node.js</li>
+                            <li>CSS3 / Sass / Tailwind</li>
+                            <li>Git & GitHub</li>
+                            <li>Figma</li>
+                        </ul>
+                    </div>
+
+                    <!-- Developing Skills -->
+                    <div class="skills-column">
+                        <h3><ion-icon name="trending-up-outline"></ion-icon> Currently Learning</h3>
+                        <p class="skills-desc">Exploring new horizons to expand my capabilities.</p>
+                        <ul class="skills-list developing">
+                            <li>Three.js & WebGL</li>
+                            <li>Rust Programming</li>
+                            <li>AWS Cloud Architecture</li>
+                            <li>Generative AI Integration</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section contact-section">
+            <div class="container contact-container">
+                <h2 class="section-title">Let's Create Something Together</h2>
+                <p>Available for freelance projects and collaborations.</p>
+
+                <div class="social-links">
+                    <a href="#" class="social-card">
+                        <ion-icon name="mail-outline"></ion-icon>
+                        <span>Email Me</span>
+                    </a>
+                    <a href="#" class="social-card">
+                        <ion-icon name="logo-linkedin"></ion-icon>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="#" class="social-card">
+                        <ion-icon name="logo-twitter"></ion-icon>
+                        <span>Twitter</span>
+                    </a>
+                    <a href="#" class="social-card">
+                        <ion-icon name="logo-instagram"></ion-icon>
+                        <span>Instagram</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">NOVA.</div>
+            <p>&copy; 2024 Nova Portfolio. Crafted with intention.</p>
+        </div>
+    </footer>
+
+    <!-- MODALS (Hidden by default) -->
+
+    <!-- Modal Overlay -->
+    <div class="modal-overlay" id="modal-overlay"></div>
+
+    <!-- Book Modals -->
+    <div class="modal" id="modal-book-1">
+        <button class="close-modal"><ion-icon name="close"></ion-icon></button>
+        <h3>Thoughts on Atomic Habits</h3>
+        <p>This book completely changed how I view progress. The idea of 1% improvements compounding over time is
+            powerful not just for life, but for coding as well. Highly recommended for anyone looking to build better
+            systems.</p>
+    </div>
+
+    <div class="modal" id="modal-book-2">
+        <button class="close-modal"><ion-icon name="close"></ion-icon></button>
+        <h3>Thoughts on Deep Work</h3>
+        <p>In an age of distraction, this book is a survival guide. It convinced me to shut off notifications and focus
+            on 'deep' tasks for 4 hour blocks. My productivity doubled after applying these techniques.</p>
+    </div>
+
+    <div class="modal" id="modal-book-3">
+        <button class="close-modal"><ion-icon name="close"></ion-icon></button>
+        <h3>Thoughts on Clean Code</h3>
+        <p>A classic for a reason. While some examples are dated, the core philosophy of writing code for humans first,
+            machines second, is timeless. It made me a much more empathetic developer.</p>
+    </div>
+
+    <!-- Gallery Modals -->
+    <div class="modal" id="modal-gallery-1">
+        <button class="close-modal"><ion-icon name="close"></ion-icon></button>
+        <div class="modal-image-container">
+            <!-- Reuse image or full res -->
+            <div class="image-placeholder gallery-placeholder"><span>Photo 1 Full Res</span></div>
+        </div>
+        <div class="modal-text">
+            <h3>Mountain Sunrise</h3>
+            <p>Taken during my trip to the Alps. The air was crisp, and the silence was deafening. A moment of pure
+                clarity before the chaos of the city returned.</p>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-gallery-2">
+        <button class="close-modal"><ion-icon name="close"></ion-icon></button>
+        <div class="modal-image-container">
+            <div class="image-placeholder gallery-placeholder"><span>Photo 2 Full Res</span></div>
+        </div>
+        <div class="modal-text">
+            <h3>Coffee Shop Sketching</h3>
+            <p>My favorite local spot. I spend hours here just sketching ideas and people watching. Essential for my
+                creative process.</p>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-gallery-3">
+        <button class="close-modal"><ion-icon name="close"></ion-icon></button>
+        <div class="modal-image-container">
+            <div class="image-placeholder gallery-placeholder"><span>Photo 3 Full Res</span></div>
+        </div>
+        <div class="modal-text">
+            <h3>Late Night Coding</h3>
+            <p>There's something magical about the world when everyone else is asleep. Just me, the blue light, and a
+                problem to solve.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

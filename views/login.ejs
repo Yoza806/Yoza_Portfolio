@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="/admin.css">
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+</head>
+<body>
+    
+    <div class="login-wrapper">
+        <div class="admin-card login-card">
+            <h2 style="text-align: center;">Admin Access</h2>
+            
+            <% if (locals.error) { %>
+                <div class="alert-error"><%= error %></div>
+            <% } %>
+
+            <form action="/login" method="POST">
+                <label>Username</label>
+                <input type="text" name="username" required autofocus>
+
+                <label>Password</label>
+                <input type="password" name="password" required>
+
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+    </head>
+<body>
+    
+    <div class="dashboard-header">
+        <h1 class="page-title">Admin Dashboard</h1>
+        <a href="/logout" class="btn-logout">Logout</a>
+    </div>
+
+    <!-- Tab Navigation -->
+    <div class="admin-tabs">
+        <button class="tab-btn active" onclick="openTab(event, 'projects')">Projects</button>
+        <button class="tab-btn" onclick="openTab(event, 'books')">Books</button>
+        <button class="tab-btn" onclick="openTab(event, 'gallery')">Gallery</button>
+        <button class="tab-btn" onclick="openTab(event, 'skills')">Skills</button>
+    </div>
+
+    <!-- Projects Section -->
+    <div id="projects" class="tab-content active">
+        <div class="admin-grid">
+        
+        <div class="admin-card">
+            <h2>Add Project</h2>
+            <form action="/admin/add-project" method="POST" class="project-form">
+                <label>Project Title</label>
+                <input type="text" name="title" required placeholder="e.g. Portfolio V2">
+
+                <label>Image URL</label>
+                <input type="text" name="imageURL" required placeholder="/images/...">
+
+                <label>Description</label>
+                <textarea name="description" rows="5" placeholder="Project details..."></textarea>
+
+                <label>Project Link</label>
+                <input type="url" name="projectLink" required placeholder="https://...">
+
+                <button type="submit">Add Project</button>
+            </form>
+        </div>
+
+        <div class="admin-card">
+            <h2>Edit Project</h2>
+            <form action="/admin/edit" method="POST">
+                <label>Select Project to Edit</label>
+                <select name="projectID">
+                    <option disabled selected>Choose a project</option>
+                    <% projects.forEach(element => { %>
+                        <option value="<%= element.id %>"><%= element.title %></option>
+                   <% }); %>
+                </select>
+
+                <div class="separator-text">Enter new details below:</div>
+
+                <label>New Title</label>
+                <input type="text" name="title">
+
+                <label>New Image Path</label>
+                <input type="text" name="imageURL">
+
+                <label>New Description</label>
+                <textarea name="description"></textarea>
+
+                <label>New Link</label>
+                <input type="url" name="projectLink">
+
+                <button type="submit">Update Project</button>
+            </form>
+        </div>
+
+        <div class="admin-card delete-card">
+            <h2>Delete Project</h2>
+            <p class="card-subtitle">Permanently remove a project from the database.</p>
+            
+            <form action="/admin/delete" method="POST">
+                <label>Select Project</label>
+                <select name="projectID" required>
+                    <option disabled selected>Choose a project</option>      
+                    <% projects.forEach(element => {%>
+                        <option value="<%= element.id %>"><%= element.title %></option>
+                   <% }); %>
+                </select>
+
+                <button type="submit" class="btn-delete">Delete Project</button>
+            </form>
+        </div>
+        </div>
+    </div>
+  
+    <!-- Books Section -->
+    <div id="books" class="tab-content">
+        <div class="admin-grid">
+
+            <div class="admin-card">
+            <h2>Add a book to your library</h2>
+            <form action="/admin/add-book" method="POST" class="project-form">
+                
+                <label>Book Title</label>
+                <input type="text" name="title" required placeholder="book name..">
+
+                <label>Author</label>
+                <input type="text" name="author" required placeholder="the author of your book">
+
+                <label>Rating (0 - 10)</label>
+                <input 
+                    type="number" 
+                    name="rating" 
+                    id="rating"
+                    min="0" 
+                    max="10" 
+                    step="0.1"
+                    required
+                >
+
+                <label>ISBN</label>
+                <input type="text" name="isbn" required placeholder="search for isbn number">
+
+                <label>My Thoughts</label>
+                <textarea name="my_thoughts"  placeholder="Honest review about the book..."></textarea>
+
+                <button type="submit">Add Book</button>
+            </form>
+        </div>
+
+        <div class="admin-card">
+            <h2>Edit Book</h2>
+            <form action="/admin/edit-book" method="POST">
+                <label>Select a Book to Edit</label>
+                <select name="book_id">
+                    <option disabled selected>Choose a book</option>
+                    <% books.forEach(element => { %>
+                        <option value="<%= element.book_id %>"><%= element.title %></option>
+                   <% }); %>
+                </select>
+
+                <div class="separator-text">Enter new details below:</div>
+
+                <label>Book Title</label>
+                <input type="text" name="title"  placeholder="book name..">
+
+                <label>Author</label>
+                <input type="text" name="author"  placeholder="the author of your book">
+
+                <label>Rating (0 - 10)</label>
+                <input 
+                    type="number" 
+                    name="rating" 
+                    id="rating"
+                    min="0" 
+                    max="10" 
+                    step="0.1"
+                    
+                >
+
+                <label>ISBN</label>
+                <input type="text" name="isbn"  placeholder="search for isbn number">
+
+                <label>My Thoughts</label>
+                <textarea name="my_thoughts"  placeholder="Honest review about the book..."></textarea>
+
+                <button type="submit">Update Book</button>
+            </form>
+
+    </div>
+
+     <div class="admin-card delete-card">
+            <h2>Delete Books</h2>
+            <p class="card-subtitle">Permanently remove a book from the library.</p>
+            
+            <form action="/admin/delete-book" method="POST">
+                <label>Select Book</label>
+                <select name="book_id" required>
+                    <option disabled selected>Choose a Book</option>      
+                    <% books.forEach(element => {%>
+                        <option value="<%= element.book_id %>"><%= element.title %></option>
+                   <% }); %>
+                </select>
+
+                <button type="submit" class="btn-delete">Delete Book</button>
+            </form>
+        </div>
+        </div>
+    </div>
+
+    <!-- Gallery Section -->
+    <div id="gallery" class="tab-content">
+        <div class="admin-grid">
+            <div class="admin-card">
+    <h2>Add Gallery Image</h2>
+    <form action="/admin/add-gallery" method="POST">
+
+        <label>Image URL</label>
+        <input type="text" name="img_url" required placeholder="Paste image URL">
+
+        <label>Write the story</label>
+        <textarea name="img_description" required placeholder="Write story..."></textarea>
+
+        <button type="submit">Add Image</button>
+    </form>
+</div>
+
+<div class="admin-card">
+    <h2>Edit Image Description</h2>
+    <form action="/admin/edit-gallery" method="POST">
+
+        <label>Select Image</label>
+        <select name="img_id" required>
+            <option disabled selected>Choose an  image</option>
+            <% gallery.forEach(item => { %>
+                <option value="<%= item.img_id %>">
+                    ID <%= item.img_id %> - <%= item.img_description %>
+                </option>
+            <% }); %>
+        </select>
+
+        <label>New Description</label>
+        <textarea name="img_description" required></textarea>
+
+        <button type="submit">Update Description</button>
+    </form>
+</div>
+<div class="admin-card">
+    <h2>Delete Gallery Image</h2>
+    <form action="/admin/delete-gallery" method="POST">
+
+        <label>Select Image</label>
+        <select name="img_id" required>
+            <option disabled selected>Choose an image</option>
+            <% gallery.forEach(item => { %>
+                <option value="<%= item.img_id %>">
+                    ID <%= item.img_id %> - <%= item.img_description %>
+                </option>
+            <% }); %>
+        </select>
+
+        <button type="submit">Delete Image</button>
+    </form>
+</div>
+        </div>
+    </div>
+
+    <!-- Skills Section -->
+    <div id="skills" class="tab-content">
+        <div class="admin-grid">
+            <div class="admin-card">
+    <h2>Add Skill</h2>
+    <form action="/admin/add-skill" method="POST">
+
+        <label>Current Skill</label>
+        <input type="text" name="skill_name" required>
+
+        <label>Skill Type</label>
+        <select name="skill_type" required>
+            <option value="current">Current Skill</option>
+            <option value="learning">Learning Skill</option>
+        </select>
+
+        <button type="submit">Add Skill</button>
+    </form>
+</div>
+
+<div class="admin-card">
+    <h2>Edit Skill</h2>
+    <form action="/admin/edit-skill" method="POST">
+
+        <label>Select Skill</label>
+        <select name="skill_id" required>
+            <% skills.forEach(skill => { %>
+                <option value="<%= skill.skill_id %>">
+                    <%= skill.skill_name %> (<%= skill.skill_type %>)
+                </option>
+            <% }); %>
+        </select>
+
+        <label>New Skill Name</label>
+        <input type="text" name="skill_name">
+
+        <label>Change Type</label>
+        <select name="skill_type">
+            <option value="">Keep Same</option>
+            <option value="current">Current Skill</option>
+            <option value="learning">Learning Skill</option>
+        </select>
+
+        <button type="submit">Update Skill</button>
+    </form>
+</div>
+
+<div class="admin-card">
+    <h2>Delete Skill</h2>
+    <form action="/admin/delete-skill" method="POST">
+
+        <label>Select Skill</label>
+        <select name="skill_id" required>
+            <% skills.forEach(skill => { %>
+                <option value="<%= skill.skill_id %>">
+                    <%= skill.skill_name %> (<%= skill.skill_type %>)
+                </option>
+            <% }); %>
+        </select>
+
+        <button type="submit">Delete Skill</button>
+    </form>
+</div>
+</div>
+    </div>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        
+        // Hide all tab content
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Remove active class from all buttons
+        tablinks = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab and activate the button
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
+
+</body>
+</html>
