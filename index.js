@@ -4,43 +4,49 @@ import dotenv from "dotenv";
 import pg from "pg";
 import session from "express-session";
 import bcrypt from "bcrypt";
-import postgres from 'postgres'
-
 
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT;
 
+// PORT fallback — important for Render
+const port = process.env.PORT || 3000;
+
+// DB client (Supabase / other) — only use connectionString
 const db = new pg.Client({
   connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false,
-  },
+  ssl: { rejectUnauthorized: false },
 });
+
 console.log("DB URL exists:", !!process.env.DATABASE_URL);
 db.connect()
   .then(() => console.log("Connected to Supabase"))
   .catch(err => console.log("DB Connection Error:", err));
 
-
-//middleware 
-
-app.use(bodyParser.urlencoded({extended:true}));
+// middleware
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
+app.set("view engine", "ejs");
+
+// trust proxy needed for secure cookies behind Render/Heroku/etc.
 app.set('trust proxy', 1);
 
-// 1. Session Config
+// SESSION: in production use a real secret and secure cookie
+const isProd = process.env.NODE_ENV === "production";
+if (isProd && !process.env.SESSION_SECRET) {
+  console.warn("WARNING: SESSION_SECRET is not set in production!");
+}
+
 app.use(session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-        secure: false,
-        httpOnly: true,
-        sameSite: 'lax',
-        maxAge: 24 * 60 * 60 * 1000
-    }
+  secret: process.env.SESSION_SECRET || (require('crypto').randomBytes(64).toString('hex')), // fallback only for dev
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    secure: isProd,          // true in production, false in dev
+    httpOnly: true,
+    sameSite: 'lax',
+    maxAge: 24 * 60 * 60 * 1000
+  }
 }));
 
 //set EJS as template engine
