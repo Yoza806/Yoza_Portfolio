@@ -12,20 +12,16 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT;
 
-// const db = new pg.Client(
-//     {
-//         user:process.env.DB_USER,
-//         host:process.env.DB_HOST,
-//         database:process.env.DB_NAME,
-//         password:process.env.DB_PASSWORD,
-//         port:process.env.DB_PORT,
-//     }
-// );
-
-// const connectionString = process.env.DATABASE_URL
-// const sql = postgres(connectionString)
-
-// export default sql
+const db = new pg.Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
+});
+console.log("DB URL exists:", !!process.env.DATABASE_URL);
+db.connect()
+  .then(() => console.log("Connected to Supabase"))
+  .catch(err => console.log("DB Connection Error:", err));
 
 
 //middleware 
