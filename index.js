@@ -28,15 +28,18 @@ db.connect()
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("public"));
+app.set('trust proxy', 1);
 
 // 1. Session Config
 app.use(session({
-    secret: process.env.SESSION_SECRET || 'change_this_to_a_long_random_string',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-    cookie: { 
-        secure: true, // Set to true if using HTTPS
-        maxAge: 24 * 60 * 60 * 1000 // 24 hours
+    cookie: {
+        secure: true,
+        httpOnly: true,
+        sameSite: 'lax',
+        maxAge: 24 * 60 * 60 * 1000
     }
 }));
 
@@ -83,6 +86,8 @@ app.post('/login', async (req, res) => {
     
     try {
         const result = await db.query('SELECT * FROM users WHERE username = $1', [username]);
+        
+
         
         if (result.rows.length > 0) {
             const user = result.rows[0];
