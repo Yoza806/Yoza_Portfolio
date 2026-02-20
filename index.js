@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import pg from "pg";
 import session from "express-session";
 import bcrypt from "bcrypt";
+import postgres from 'postgres'
 
 
 dotenv.config();
@@ -21,14 +22,10 @@ const port = process.env.PORT;
 //     }
 // );
 
-const db = new pg.Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false,
-  },
-});
+const connectionString = process.env.DATABASE_URL
+const sql = postgres(connectionString)
 
-db.connect();
+export default sql
 
 
 //middleware 
