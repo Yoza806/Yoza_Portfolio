@@ -57,10 +57,10 @@ app.set("view engine","ejs")
 app.get("/", async (req,res)=>{
 
     try{
-        const result = await db.query("SELECT * FROM projects");
-        const book_result = await db.query("SELECT * FROM books")
-        const gallery_result = await db.query("SELECT * FROM gallery")
-        const skills_Result = await db.query("SELECT * FROM skills");
+        const result = await db.query("SELECT * FROM projects ORDER BY created_at DESC");
+        const book_result = await db.query("SELECT * FROM books ORDER BY created_at DESC")
+        const gallery_result = await db.query("SELECT * FROM gallery ORDER BY created_at DESC")
+        const skills_Result = await db.query("SELECT * FROM skills ORDER BY created_at DESC");
 
         // const result = { rows: [] };
         // const book_result = { rows: [] };
@@ -69,8 +69,11 @@ app.get("/", async (req,res)=>{
 
         res.render("index.ejs",{projects:result.rows, books:book_result.rows,gallery:gallery_result.rows, skills:skills_Result.rows});
     }catch(err){
-        console.log(err);
-        res.send("DatabseError")
+        // console.log(err);
+        // res.send("DatabseError")
+
+    console.error("HOME ROUTE ERROR:", err);
+    res.status(500).send(err.message);
     }
 });
 
