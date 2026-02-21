@@ -57,15 +57,15 @@ app.set("view engine","ejs")
 app.get("/", async (req,res)=>{
 
     try{
-        // const result = await db.query("SELECT * FROM projects");
-        // const book_result = await db.query("SELECT * FROM books")
-        // const gallery_result = await db.query("SELECT * FROM gallery")
-        // const skills_Result = await db.query("SELECT * FROM skills");
+        const result = await db.query("SELECT * FROM projects");
+        const book_result = await db.query("SELECT * FROM books")
+        const gallery_result = await db.query("SELECT * FROM gallery")
+        const skills_Result = await db.query("SELECT * FROM skills");
 
-        const result = { rows: [] };
-        const book_result = { rows: [] };
-        const gallery_result = { rows: [] };
-        const skills_Result = { rows: [] };
+        // const result = { rows: [] };
+        // const book_result = { rows: [] };
+        // const gallery_result = { rows: [] };
+        // const skills_Result = { rows: [] };
 
         res.render("index.ejs",{projects:result.rows, books:book_result.rows,gallery:gallery_result.rows, skills:skills_Result.rows});
     }catch(err){
